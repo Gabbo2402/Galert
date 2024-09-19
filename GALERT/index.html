@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="quasi.js"></script>
+<script src="Galert.js"></script>
+<script>
+    var file;
+    var lines;
+    function funzione_si(){
+        console.log("Conclusione Operazione Galert");
+    };
+    function funzione_scegli(elemento){
+        console.log(elemento);
+    };
+    function funzione_Ok(){
+        console.log("La stringa è ok")
+    }; 
+    function getFile(){
+        return lines;
+    };
+</script>
+<div><h1>Sito test</h1></div>
+<div>
+    Questo è il paragrafo usato per inserire il bottone<br>
+    <input type="file" id="file" name="file">
+    <button onclick="creaGalertTipo6(['In questo Galert puoi scegliere su quali campi effettuare la ricerca e poi scegliere ciò che stai cercando',funzione_scegli,'s3',getFile()])">GALERT</button>
+</div>
+<script>
+    document.getElementById("file").addEventListener("change", function (event) {
+        file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function () {
+            lines = this.result.split(/\r\n|\n/);
+        };
+        reader.readAsText(file);
+    });
+</script>
+<!--<script>
+    var chiavi=[];
+    //var valori=[];
+    var json=[];
+    document.getElementById("file").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            json = JSON.parse(e.target.result);
+            chiavi=Object.keys(json[0]);
+            //json.forEach(element => {
+                //valori.push(Object.values(element));
+            //});
+        };
+        reader.readAsText(file);
+    });
+</script>-->
+</body>
+</html>
